@@ -1,0 +1,30 @@
+<div class="navbar navbar-light bg-light">
+<%= link_to 'Homepage', restaurants_path, class: "btn btn-light" %>
+<%= link_to 'Add a new restaurant', new_restaurant_path, class: "btn btn-light" %>
+</div>
+
+<h2><%= @restaurant.name%></h2>
+<h4><%= @restaurant.address%></h4>
+<h4><%= @restaurant.category%></h4>
+
+<div class="container">
+  <h3 class="text-center font-weight-bold">Reviews</h3>
+  <ul class="list-group">
+    <% @reviews.each do |review| %>
+      <%= review.name %>
+    <% end %>
+  </ul>
+</div>
+
+
+<div class="container">
+  <h3>Add a review</h3>
+  <%= simple_form_for [ @restaurant, @review ] do |f| %>
+    <%= f.input :rating, collection: 0..5 %>
+    <%= f.input :content %>
+    <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<%= link_to 'Back', restaurants_path, class: "btn btn-primary"%>
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>

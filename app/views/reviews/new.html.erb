@@ -1,0 +1,14 @@
+<div class="navbar navbar-light bg-light">
+<h2>New Review</h2>
+<%= link_to 'Homepage', restaurants_path, class: "btn btn-light" %>
+<%= link_to 'Add a new restaurant', new_restaurant_path, class: "btn btn-light" %>
+</div>
+
+
+<div class="container">
+<%= simple_form_for [ @restaurant, @review ] do |f| %>
+  <%= f.input :rating, collection: 0..5 %>
+  <%= f.input :content %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
+</div>
